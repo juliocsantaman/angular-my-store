@@ -1,0 +1,19 @@
+.message-error {
+  background-color: red;
+  color: white;
+  opacity: 0;
+  transition: all linear .5s;
+  &.invalid {
+    opacity: 1;
+  }
+}
+
+.error-line {
+  &.valid {
+    border: 5px solid green;
+  }
+
+  &.invalid {
+    border: 5px solid red;
+  }
+}

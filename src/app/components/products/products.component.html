@@ -1,8 +1,26 @@
+<div class="info">
 
-<p>Cantidad de artículos agregados: {{ shoppingCart.length }}</p>
-<p>Total: {{ total }} </p>
+  <p>Cantidad de artículos agregados: {{ shoppingCart.length }}</p>
+  <p>Total: {{ total }} </p>
+  <p>
+    {{ today | date: 'short' }}
+  </p>
 
-<div class="products-grid">
-  <app-product (addedProduct)="addedProduct($event)" *ngFor="let product of products; index as i" [product]="product"></app-product>
+  <p>
+    {{ today | timeAgo }}
+  </p>
 </div>
 
+<!--
+<p appHighLight>
+  {{ date | date: 'dd.MM.yyyy' }}
+</p>
+
+<p>
+  {{ 'hOlA' | uppercase | reverse }}
+</p> -->
+
+<div class="products-grid">
+  <app-product (addedProduct)="addedProduct($event)" *ngFor="let product of products; index as i" [product]="product">
+  </app-product>
+</div>

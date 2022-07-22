@@ -1,5 +1,27 @@
 img {
-  max-width: 100%;
-  width: 100%;
+  // max-width: 75%;
+  width: 75%;
   height: 200px;
+  display: grid;
+  margin: auto;
+  object-fit: center;
+  object-position: center;
 }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  img {
+    max-width: 100%;
+    width: 100%;
+    height: 200px;
+    object-fit: center;
+    object-position: center;
+  }
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+}
+

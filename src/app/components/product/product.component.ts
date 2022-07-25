@@ -9,7 +9,10 @@ import { Product } from 'src/app/interfaces/product.model';
 export class ProductComponent implements OnInit {
 
   @Input() product!: Product;
+  @Input() isAddProduct: boolean = false;
+  @Input() productIndex: number = -1;
   @Output() addedProduct = new EventEmitter<Product>();
+  @Output() deletedProduct = new EventEmitter<number>();
 
   // product: Product = {
   //   id: '1',
@@ -25,6 +28,10 @@ export class ProductComponent implements OnInit {
 
   addToCart(): void {
     this.addedProduct.emit(this.product);
+  }
+
+  deleteProduct(): void {
+    this.deletedProduct.emit(this.productIndex);
   }
 
 }

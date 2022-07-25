@@ -21,6 +21,6 @@
 </p> -->
 
 <div class="products-grid">
-  <app-product (addedProduct)="addedProduct($event)" *ngFor="let product of products; index as i" [product]="product">
+  <app-product (addedProduct)="addedProduct($event)" *ngFor="let product of products; index as i" [product]="product" [isAddProduct]="true" [productIndex]="i">
   </app-product>
 </div>

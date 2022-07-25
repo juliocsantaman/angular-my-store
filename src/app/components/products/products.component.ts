@@ -21,6 +21,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.shoppingCart = this.storeService.getShoppingCart();
+    this.total = this.storeService.getTotal();
     this.productsService.getAllProducts().subscribe((productsApi: Product[]) => {
       this.products = productsApi;
     });

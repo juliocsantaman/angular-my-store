@@ -1,0 +1,31 @@
+.info, .products-grid {
+  margin: 0rem 1rem;
+}
+
+.products-grid {
+  display: flex;
+  flex-direction: column;
+  // display: grid;
+  // grid-template-columns: 1fr;
+  margin-top: 3rem;
+}
+
+.info p {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+}
+
+@media (min-width: 992px) {
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 80px;
+  }
+}

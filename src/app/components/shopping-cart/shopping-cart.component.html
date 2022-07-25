@@ -1,0 +1,15 @@
+<div class="shopping-cart">
+  <div class="info">
+    <p>Your list</p>
+    <p> <strong>Total: {{ total }}</strong> </p>
+    <p> <strong>Cantidad de artículos: {{ counter }} </strong> </p>
+  </div>
+
+  <div class="products-grid">
+    <app-product (deletedProduct)="deletedProduct($event)" *ngFor="let product of shoppingCart; index as i"
+      [product]="product" [productIndex]="i">
+    </app-product>
+
+  </div>
+
+</div>

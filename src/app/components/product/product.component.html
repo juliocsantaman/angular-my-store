@@ -4,6 +4,7 @@
   <h2 class="product-title"> {{ product.title }} </h2>
   <p class="product-price">${{product.price}} </p>
 
-  <button class="product-button" (click)="addToCart()">Add to cart</button>
-
+  <button *ngIf="isAddProduct" class="product-button" (click)="addToCart()">Add to cart</button>
+  <span *ngIf="!isAddProduct" class="product-delete" (click)="deleteProduct()">X</span>
+  <!-- <p *ngIf="!isAddProduct">{{ productIndex }}</p> -->
 </div>

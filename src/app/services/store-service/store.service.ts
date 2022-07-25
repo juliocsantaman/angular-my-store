@@ -24,7 +24,14 @@ export class StoreService {
   }
 
   getTotal(): number {
-    return this.shoppingCart.reduce((add, product) => add + product.price, 0);
+    let total = this.shoppingCart.reduce((add, product) => add + product.price, 0);
+    //this.myCart.next(this.shoppingCart);
+    return total;
+  }
+
+  deleteProduct(productIndex: number): void {
+    this.shoppingCart.splice(productIndex, 1);
+    this.myCart.next(this.shoppingCart);
   }
 
 }

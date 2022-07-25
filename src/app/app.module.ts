@@ -19,6 +19,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { ReversePipe } from './pipes/reverse/reverse.pipe';
 import { TimeAgoPipe } from './pipes/timeAgo/time-ago.pipe';
 import { HighLightDirective } from './directives/high-light.directive';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 /* END OF PIPES */
 
 @NgModule({
@@ -31,7 +32,8 @@ import { HighLightDirective } from './directives/high-light.directive';
     NavComponent,
     ReversePipe,
     TimeAgoPipe,
-    HighLightDirective
+    HighLightDirective,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,

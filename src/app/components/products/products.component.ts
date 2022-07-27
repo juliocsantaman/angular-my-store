@@ -19,13 +19,15 @@ export class ProductsComponent implements OnInit {
   showProductDetail: boolean = false;
   @Input() newTitle: string = 'Angular My Store';
   @Input() userMode: string = 'default';
+  limit: number = 10;
+  offset: number = 0;
 
   constructor(private storeService: StoreService, private productsService: ProductsService) { }
 
   ngOnInit(): void {
     this.shoppingCart = this.storeService.getShoppingCart();
     this.total = this.storeService.getTotal();
-    this.productsService.getAllProducts().subscribe((productsApi: Product[]) => {
+    this.productsService.getAllProducts(this.limit, this.offset).subscribe((productsApi: Product[]) => {
       this.products = productsApi;
     });
   }
@@ -86,6 +88,14 @@ export class ProductsComponent implements OnInit {
       const productIndex = this.products.findIndex((product) => product.id === this.productChoosen.id);
       this.products.splice(productIndex, 1);
       this.showProductDetail = false;
+    });
+  }
+
+  loadMore() {
+    this.offset += this.limit;
+    this.productsService.getAllProducts(this.limit, this.offset).subscribe((productsApi: Product[]) => {
+      this.products = this.products.concat(productsApi);
+
     });
   }
 

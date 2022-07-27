@@ -13,6 +13,8 @@
   <app-product (detailShown)="showDetail($event)" (addedProduct)="addedProduct($event)"
     *ngFor="let product of products; index as i" [product]="product" [isAddProduct]="true" [productIndex]="i">
   </app-product>
+
+  <button (click)="loadMore()">Load More</button>
 </div>
 
 <div class="product-detail" *ngIf="showProductDetail" [class.active]="showProductDetail">

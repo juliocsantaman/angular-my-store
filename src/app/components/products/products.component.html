@@ -1,26 +1,36 @@
 <div class="info">
-
+  <h1> {{ newTitle }} </h1>
   <p>Cantidad de artículos agregados: {{ shoppingCart.length }}</p>
   <p>Total: {{ total }} </p>
   <p>
     {{ today | date: 'short' }}
   </p>
-
-  <p>
-    {{ today | timeAgo }}
-  </p>
+  <button *ngIf="userMode === 'admin'" (click)="createNewProduct()">Create</button>
 </div>
 
-<!--
-<p appHighLight>
-  {{ date | date: 'dd.MM.yyyy' }}
-</p>
-
-<p>
-  {{ 'hOlA' | uppercase | reverse }}
-</p> -->
 
 <div class="products-grid">
-  <app-product (addedProduct)="addedProduct($event)" *ngFor="let product of products; index as i" [product]="product" [isAddProduct]="true" [productIndex]="i">
+  <app-product (detailShown)="showDetail($event)" (addedProduct)="addedProduct($event)"
+    *ngFor="let product of products; index as i" [product]="product" [isAddProduct]="true" [productIndex]="i">
   </app-product>
+</div>
+
+<div class="product-detail" *ngIf="showProductDetail" [class.active]="showProductDetail">
+  <p class="close-detail" (click)="toggleProductDetail()">X</p>
+  <div>
+
+    <app-product
+    [product]="productChoosen"
+    [isAddProduct]="true"
+    [showSlider]="true"
+    (addedProduct)="addedProduct($event)"
+    >
+    </app-product>
+
+    <div class="product-config-buttons" *ngIf="userMode === 'admin'">
+      <button class="product-button product-button__blue" (click)="updateProduct()">Edit</button>
+      <button class="product-button product-button__red" (click)="deleteProduct()">Delete</button>
+    </div>
+
+  </div>
 </div>

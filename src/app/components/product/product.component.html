@@ -1,10 +1,17 @@
 <div class="product">
   <!-- <img width="200" [src]="product.image" alt="image">} -->
-  <app-img [img]="product.image"></app-img>
+  <app-img *ngIf="product.images.length > 0 && !showSlider" [img]="product.images[0]"></app-img>
+  <swiper *ngIf="showSlider" [slidesPerView]="1">
+    <ng-template swiperSlide *ngFor="let img of product.images">
+      <app-img [img]="img"></app-img>
+    </ng-template>
+  </swiper>
   <h2 class="product-title"> {{ product.title }} </h2>
   <p class="product-price">${{product.price}} </p>
 
   <button *ngIf="isAddProduct" class="product-button" (click)="addToCart()">Add to cart</button>
+  <button *ngIf="isAddProduct" class="product-button product-button__very-light-pink" (click)="showDetail()">Show
+    detail</button>
   <span *ngIf="!isAddProduct" class="product-delete" (click)="deleteProduct()">X</span>
-  <!-- <p *ngIf="!isAddProduct">{{ productIndex }}</p> -->
+
 </div>

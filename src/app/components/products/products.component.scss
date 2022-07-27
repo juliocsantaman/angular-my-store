@@ -1,8 +1,11 @@
-// .info, .products-grid {
-//   margin: 0rem 1rem;
-// }
+h1 {
+  margin: 1rem 0rem;
+  font-size: 24px;
+  font-weight: bold;
+}
 
-.info, .products-grid {
+.info,
+.products-grid {
   margin: 0rem 1rem;
 }
 
@@ -16,6 +19,55 @@
 
 .info p {
   margin-bottom: 1rem;
+}
+
+.product-detail {
+  position: fixed;
+  overflow: scroll;
+  top: 0px;
+  left: 50%;
+  bottom: 0px;
+  right: 0px;
+  background-color: white;
+  z-index: 1;
+  transform: translateX(100%);
+  transition: all ease-out .5s;
+  display: flex;
+  justify-content: center;
+  border-left: 2px solid #C7C7C7;
+  border-bottom: 2px solid #C7C7C7;
+
+  &.active {
+    transform: translateX(0%);
+  }
+
+  div {
+    width: 60%;
+
+    &.product-config-buttons {
+      width: 100%;
+    }
+  }
+}
+
+.close-detail {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  top: 0px;
+  left: 0px;
+  color: white;
+  background-color: red;
+  cursor: pointer;
+  z-index: 10;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
 }
 
 @media (min-width: 768px) {

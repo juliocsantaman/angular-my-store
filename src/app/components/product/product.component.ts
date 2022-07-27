@@ -11,8 +11,10 @@ export class ProductComponent implements OnInit {
   @Input() product!: Product;
   @Input() isAddProduct: boolean = false;
   @Input() productIndex: number = -1;
+  @Input() showSlider: boolean = false;
   @Output() addedProduct = new EventEmitter<Product>();
   @Output() deletedProduct = new EventEmitter<number>();
+  @Output() detailShown = new EventEmitter<string>();
 
   // product: Product = {
   //   id: '1',
@@ -32,6 +34,10 @@ export class ProductComponent implements OnInit {
 
   deleteProduct(): void {
     this.deletedProduct.emit(this.productIndex);
+  }
+
+  showDetail(): void {
+    this.detailShown.emit(this.product.id);
   }
 
 }

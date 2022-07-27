@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SwiperModule } from 'swiper/angular';
 /* END OF MODULES */
 
 /* COMPONENTS */
@@ -20,6 +21,7 @@ import { ReversePipe } from './pipes/reverse/reverse.pipe';
 import { TimeAgoPipe } from './pipes/timeAgo/time-ago.pipe';
 import { HighLightDirective } from './directives/high-light.directive';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { AdminConfigComponent } from './components/admin-config/admin-config.component';
 /* END OF PIPES */
 
 @NgModule({
@@ -33,13 +35,15 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     ReversePipe,
     TimeAgoPipe,
     HighLightDirective,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    AdminConfigComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SwiperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

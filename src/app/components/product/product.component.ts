@@ -12,16 +12,10 @@ export class ProductComponent implements OnInit {
   @Input() isAddProduct: boolean = false;
   @Input() productIndex: number = -1;
   @Input() showSlider: boolean = false;
+  @Input() statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
   @Output() addedProduct = new EventEmitter<Product>();
   @Output() deletedProduct = new EventEmitter<number>();
   @Output() detailShown = new EventEmitter<string>();
-
-  // product: Product = {
-  //   id: '1',
-  //   name: 'Product 1',
-  //   price: 100,
-  //   image: 'https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-Coca-Cola-Classic-Small-1:1-3-product-tile-desktop?wid=765&hei=472&dpr=off'
-  // }
 
   constructor() { }
 

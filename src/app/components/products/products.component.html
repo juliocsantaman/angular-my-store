@@ -8,17 +8,19 @@
   <button *ngIf="userMode === 'admin'" (click)="createNewProduct()">Create</button>
 </div>
 
+<button (click)="showDetail('j12')">Product error</button>
 
 <div class="products-grid">
   <app-product (detailShown)="showDetail($event)" (addedProduct)="addedProduct($event)"
     *ngFor="let product of products; index as i" [product]="product" [isAddProduct]="true" [productIndex]="i">
   </app-product>
 
-  <button (click)="loadMore()">Load More</button>
+  <button (click)="onLoadMore()">Load More</button>
 </div>
 
 <div class="product-detail" *ngIf="showProductDetail" [class.active]="showProductDetail">
   <p class="close-detail" (click)="toggleProductDetail()">X</p>
+
   <div>
 
     <app-product
@@ -26,12 +28,13 @@
     [isAddProduct]="true"
     [showSlider]="true"
     (addedProduct)="addedProduct($event)"
+    [statusDetail]="statusDetail"
     >
     </app-product>
 
     <div class="product-config-buttons" *ngIf="userMode === 'admin'">
-      <button class="product-button product-button__blue" (click)="updateProduct()">Edit</button>
-      <button class="product-button product-button__red" (click)="deleteProduct()">Delete</button>
+      <button class="button button__blue" (click)="updateProduct()">Edit</button>
+      <button class="button button__red" (click)="deleteProduct()">Delete</button>
     </div>
 
   </div>

@@ -3,7 +3,7 @@
     <button (click)="toggleMenu()">
       <img src="./assets/svg/icon_menu.svg" alt="menu">
     </button>
-    <a [routerLink]="''">
+    <a [routerLink]="'products'">
       <img src="./assets/svg/logo_yard_sale.svg" alt="logo">
     </a>
     <a [routerLink]="'shopping-cart'">
@@ -14,10 +14,11 @@
   <div class="side-menu" [ngClass]="{'active': showMenu }">
     <button (click)="toggleMenu()">Close</button>
     <ul (click)="toggleMenu()">
-      <li> <a [routerLink]="''">All</a> </li>
-      <li> <a [routerLink]="''">Clothes</a> </li>
-      <li> <a [routerLink]="''">Electronics</a> </li>
-      <li> <a [routerLink]="'admin-config'">Admin-config</a> </li>
+      <li> <a routerLinkActive="active" [routerLink]="'home'">All</a> </li>
+      <li *ngFor="let category of categories">
+        <a routerLinkActive="active" [routerLink]="['/category', category.id]"> {{ category.name }} </a>
+      </li>
+      <li> <a routerLinkActive="active" [routerLink]="'admin'">Admin-config</a> </li>
     </ul>
   </div>
 </div>
@@ -29,16 +30,18 @@
         <img src="./assets/svg/logo_yard_sale.svg" alt="logo">
       </a>
       <ul>
-        <li> <a [routerLink]="'products'">All</a> </li>
-        <li> <a [routerLink]="''">Clothes</a> </li>
-        <li> <a [routerLink]="''">Electronics</a> </li>
-        <li> <a [routerLink]="'admin-config'">Admin-config</a> </li>
+        <li> <a routerLinkActive="active" [routerLink]="'home'">All</a> </li>
+        <li *ngFor="let category of categories">
+          <a routerLinkActive="active" [routerLink]="['/category', category.id]"> {{ category.name }} </a>
+        </li>
+        <li> <a routerLinkActive="active" [routerLink]="'admin'">Admin-config</a> </li>
       </ul>
     </nav>
     <div class="info">
-      <div class="accounts">juliocsantaman@gmail.com</div>
+      <!-- <div class="accounts">juliocsantaman@gmail.com</div> -->
+      <div  *ngIf="account !=''" class="accounts"> {{ account }} </div>
       <div class="cart">
-        <a [routerLink]="'shopping-cart'">
+        <a [routerLink]="'my-cart'">
           <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
         </a>
         <span class="counter">{{ counter }}</span>

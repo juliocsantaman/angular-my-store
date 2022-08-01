@@ -19,7 +19,7 @@
   }
 }
 
-.product-button {
+.button {
   width: 100%;
   margin-top: 1.5rem;
   cursor: pointer;
@@ -34,14 +34,17 @@
   }
 }
 
-.product-button__red {
+.button__red {
   background-color: #D92525;
 }
 
-.product-button__blue {
+.button__blue {
   background-color: #164773;
 }
 
-.product-button__very-light-pink {
+.button__very-light-pink {
   background-color: rgba(199, 199, 199, 1);
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

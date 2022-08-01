@@ -10,6 +10,7 @@ export interface Product {
   images: string[];
   description: string;
   category: Category;
+  taxes ?: number;
   //rating: Object;
 }
 
@@ -18,3 +19,10 @@ export interface CreateProductDTO extends Omit<Product, 'id' | 'category'> {
 }
 
 export interface UpdateProductDTO extends Partial<CreateProductDTO> { }
+
+// export interface ProductComponentOptions {
+//   product : Product
+//   isAddProduct : boolean;
+//   showSlider : boolean;
+//   statusDetail : string;
+// }

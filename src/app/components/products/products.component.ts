@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product, CreateProductDTO, UpdateProductDTO } from '../../interfaces/product.model';
 import { StoreService } from 'src/app/services/store-service/store.service';
 import { ProductsService } from 'src/app/services/products-service/products.service';
@@ -12,24 +12,20 @@ export class ProductsComponent implements OnInit {
 
   shoppingCart: Product[] = [];
   total: number = 0;
-  products: Product[] = [];
+  @Input() products: Product[] = [];
   productChoosen!: Product;
   today: Date = new Date();
-  date: Date = new Date(2021, 1, 21);
   showProductDetail: boolean = false;
   @Input() newTitle: string = 'Angular My Store';
   @Input() userMode: string = 'default';
-  limit: number = 10;
-  offset: number = 0;
+  statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
+  @Output() loadMore: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private storeService: StoreService, private productsService: ProductsService) { }
 
   ngOnInit(): void {
     this.shoppingCart = this.storeService.getShoppingCart();
     this.total = this.storeService.getTotal();
-    this.productsService.getAllProducts(this.limit, this.offset).subscribe((productsApi: Product[]) => {
-      this.products = productsApi;
-    });
   }
 
   addedProduct(product: Product): void {
@@ -42,10 +38,24 @@ export class ProductsComponent implements OnInit {
   }
 
   showDetail(id: string): void {
-    this.productsService.getProduct(id).subscribe((product) => {
-      this.productChoosen = product;
-    });
-    this.toggleProductDetail();
+    this.statusDetail = 'loading';
+
+    this.productsService.getProduct(id).subscribe(
+      {
+        next: (product) => {
+          this.productChoosen = product;
+          this.statusDetail = 'success';
+          this.toggleProductDetail();
+        },
+        error: (e) => {
+          console.error(e);
+          this.statusDetail = 'error';
+          console.error(e);
+          alert(e);
+        }
+      }
+    );
+
   }
 
   createNewProduct() {
@@ -91,12 +101,8 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  loadMore() {
-    this.offset += this.limit;
-    this.productsService.getAllProducts(this.limit, this.offset).subscribe((productsApi: Product[]) => {
-      this.products = this.products.concat(productsApi);
-
-    });
+  onLoadMore(): void {
+    this.loadMore.emit();
   }
 
 }

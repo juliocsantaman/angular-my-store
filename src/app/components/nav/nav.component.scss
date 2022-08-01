@@ -55,6 +55,12 @@
         margin: 0 .2em;
         color: inherit;
         text-decoration: none;
+        padding: .2rem .8rem;
+        &.active {
+          border: 1px solid #ACD9B2;
+          color: #ACD9B2;
+          border-radius: 6px;
+        }
       }
     }
   }

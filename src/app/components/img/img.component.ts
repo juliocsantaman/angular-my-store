@@ -13,7 +13,7 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   set changeImg(newImg: string) {
     this.img = newImg;
     // code...
-    console.log('change just img => ', this.img);
+    //console.log('change just img => ', this.img);
   }
 
   //@Input() img: string = '';
@@ -26,22 +26,22 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   constructor() {
     // before render.
     // NOT async -- once time.
-    console.log('constructor', 'img value -> ', this.img);
+    // console.log('constructor', 'img value -> ', this.img);
    }
 
    ngOnChanges(changes: SimpleChanges): void {
     // before and during render.
     // changes inputs.
     // run many times.
-    console.log('ngOnChanges', 'img value -> ', this.img);
-    console.log('changes ', changes);
+    // console.log('ngOnChanges', 'img value -> ', this.img);
+    // console.log('changes ', changes);
    }
 
   ngOnInit(): void {
     // before render.
     // yes async - fetch.
     // run once time.
-    console.log('ngOnInit', 'img value -> ', this.img);
+    // console.log('ngOnInit', 'img value -> ', this.img);
     // this.counterFn = window.setInterval(() => {
     //   // code...
     //   this.counter += 1;
@@ -52,12 +52,12 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   ngAfterViewInit(): void {
     // after render.
     // handler children.
-    console.log('ngAfterViewInit', 'img value -> ', this.img);
+    // console.log('ngAfterViewInit', 'img value -> ', this.img);
   }
 
   ngOnDestroy(): void {
     // delete.
-    console.log('ngOnDestroy', 'img value -> ', this.img);
+    // console.log('ngOnDestroy', 'img value -> ', this.img);
     window.clearInterval(this.counterFn);
   }
 
@@ -66,7 +66,7 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   }
 
   imgLoaded() {
-    console.log('Child, loaded.');
+    // console.log('Child, loaded.');
     this.loaded.emit(this.img);
   }
 

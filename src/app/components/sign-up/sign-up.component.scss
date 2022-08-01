@@ -1,0 +1,24 @@
+.sign-up-form {
+
+  div {
+    width: 25%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin: auto;
+    place-content: center;
+
+    h1 {
+      text-align: center;
+    }
+
+    .button {
+      width: 60%;
+      margin: auto;
+    }
+
+
+  }
+
+}

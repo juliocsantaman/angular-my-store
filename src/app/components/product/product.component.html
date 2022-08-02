@@ -1,21 +1,27 @@
 <div class="product">
   <!-- <img width="200" [src]="product.image" alt="image">} -->
-  <app-img *ngIf="product.images.length > 0 && !showSlider" [img]="product.images[0]"></app-img>
+  <a [routerLink]="['/product-detail', product.id]">
+    <app-img *ngIf="product.images.length > 0 && !showSlider" [img]="product.images[0]"></app-img>
+  </a>
   <swiper *ngIf="showSlider" [slidesPerView]="1">
     <ng-template swiperSlide *ngFor="let img of product.images">
       <app-img *ngIf="statusDetail === 'success'; else elseImg " [img]="img"></app-img>
       <ng-template #elseImg>
-        <app-img [img]="'https://c8.alamy.com/compes/2bw3ddk/pixel-art-8-bit-cargando-99-por-ciento-ilustracion-vectorial-aislada-2bw3ddk.jpg'"></app-img>
+        <app-img
+          [img]="'https://c8.alamy.com/compes/2bw3ddk/pixel-art-8-bit-cargando-99-por-ciento-ilustracion-vectorial-aislada-2bw3ddk.jpg'">
+        </app-img>
       </ng-template>
     </ng-template>
   </swiper>
   <h2 class="product-title"> {{ product.title }} </h2>
   <p class="product-price">${{ product.price }} </p>
-  <p> {{ product?.taxes }} </p>
+  <p> {{ product.taxes }} </p>
 
   <button *ngIf="isAddProduct" class="button" (click)="addToCart()">Add to cart</button>
-  <button *ngIf="isAddProduct" class="button button__very-light-pink" (click)="showDetail()">Show
-    detail</button>
+  <!-- <button *ngIf="isAddProduct" class="button button__very-light-pink" (click)="showDetail()">Show
+    detail</button> -->
+
+    <a *ngIf="isAddProduct" [routerLink]="['.']" [queryParams]="{ product: product.id }" (click)="showDetail()">Show detail</a>
   <span *ngIf="!isAddProduct" class="product-delete" (click)="deleteProduct()">X</span>
 
 </div>

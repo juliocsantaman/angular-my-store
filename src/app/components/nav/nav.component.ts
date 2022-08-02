@@ -30,11 +30,13 @@ export class NavComponent implements OnInit {
       this.counter = products.length;
     });
 
-    this.authService.profile().subscribe((profile) => {
-      this.account = profile.email;
-    });
+    this.tokenService.token$.subscribe((token) => {
+      this.token = token;
 
-    this.token = this.tokenService.getToken();
+      this.authService.profile().subscribe((profile) => {
+        this.account = profile.email;
+      });
+    });
 
     this.getAllCategories();
   }

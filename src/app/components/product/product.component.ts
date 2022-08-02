@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from 'src/app/interfaces/product.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -8,7 +9,15 @@ import { Product } from 'src/app/interfaces/product.model';
 })
 export class ProductComponent implements OnInit {
 
-  @Input() product!: Product;
+  @Input() product: Product = {
+    id: '0',
+    title: '',
+    price: 0,
+    images: [''],
+    description: '',
+    category: {id:'0', name: ''},
+    taxes: 0
+  };
   @Input() isAddProduct: boolean = false;
   @Input() productIndex: number = -1;
   @Input() showSlider: boolean = false;
@@ -17,7 +26,9 @@ export class ProductComponent implements OnInit {
   @Output() deletedProduct = new EventEmitter<number>();
   @Output() detailShown = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -32,6 +43,8 @@ export class ProductComponent implements OnInit {
 
   showDetail(): void {
     this.detailShown.emit(this.product.id);
+    // console.log('id: ' + this.product.id);
+    // this.router.navigate(['/product-detail', this.product.id]);
   }
 
 }

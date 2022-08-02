@@ -13,7 +13,21 @@ export class ProductsComponent implements OnInit {
   shoppingCart: Product[] = [];
   total: number = 0;
   @Input() products: Product[] = [];
-  productChoosen!: Product;
+  @Input()
+  set productId(id: string | null) {
+    if(id) {
+      this.showDetail(id);
+    }
+  }
+  productChoosen: Product = {
+    id: '0',
+    title: '',
+    price: 0,
+    images: [''],
+    description: '',
+    category: {id:'0', name: ''},
+    taxes: 0
+  };
   today: Date = new Date();
   showProductDetail: boolean = false;
   @Input() newTitle: string = 'Angular My Store';
@@ -40,12 +54,17 @@ export class ProductsComponent implements OnInit {
   showDetail(id: string): void {
     this.statusDetail = 'loading';
 
+    if(!this.showProductDetail) {
+      this.showProductDetail = true;
+    }
+
     this.productsService.getProduct(id).subscribe(
       {
         next: (product) => {
+
           this.productChoosen = product;
           this.statusDetail = 'success';
-          this.toggleProductDetail();
+          //this.toggleProductDetail();
         },
         error: (e) => {
           console.error(e);

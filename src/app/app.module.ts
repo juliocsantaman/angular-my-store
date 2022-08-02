@@ -51,6 +51,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 /* END OF PAGES */
 
 @NgModule({
@@ -76,7 +77,8 @@ import { AdminComponent } from './pages/admin/admin.component';
     ProfileComponent,
     CategoryComponent,
     SignInComponent,
-    AdminComponent
+    AdminComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,

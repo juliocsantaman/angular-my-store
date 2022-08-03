@@ -10,24 +10,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /* COMPONENTS */
 import { AppComponent } from './app.component';
-import { TodoComponent } from './components/todo/todo.component';
-import { ImgComponent } from './components/img/img.component';
-import { ProductComponent } from './components/product/product.component';
-import { ProductsComponent } from './components/products/products.component';
-import { NavComponent } from './components/nav/nav.component';
-import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
-import { AdminConfigComponent } from './components/admin-config/admin-config.component';
-import { LoginComponent } from './components/login/login.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { TodoComponent } from './website/components/todo/todo.component';
+import { ImgComponent } from './website/components/img/img.component';
+import { ProductComponent } from './website/components/product/product.component';
+import { ProductsComponent } from './website/components/products/products.component';
+import { NavComponent } from './website/components/nav/nav.component';
+import { ShoppingCartComponent } from './website/components/shopping-cart/shopping-cart.component';
+import { AdminConfigComponent } from './website/components/admin-config/admin-config.component';
+import { LoginComponent } from './website/components/login/login.component';
+import { SignUpComponent } from './website/components/sign-up/sign-up.component';
 /* END OF COMPONENTS */
 
 /* PIPES */
-import { ReversePipe } from './pipes/reverse/reverse.pipe';
-import { TimeAgoPipe } from './pipes/timeAgo/time-ago.pipe';
+import { ReversePipe } from './website/pipes/reverse/reverse.pipe';
+import { TimeAgoPipe } from './website/pipes/timeAgo/time-ago.pipe';
 /* END OF PIPES */
 
 /* DIRECTIVES */
-import { HighLightDirective } from './directives/high-light.directive';
+import { HighLightDirective } from './website/directives/high-light.directive';
 /* END OF DIRECTIVES */
 
 /* ANGULAR MATERIAL */
@@ -42,16 +42,17 @@ import { TokenInterceptor } from './interceptors/token-interceptor/token.interce
 /* END OF INTERCEPTORS */
 
 /* PAGES */
-import { HomeComponent } from './pages/home/home.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { CategoryComponent } from './pages/category/category.component';
-import { MyCartComponent } from './pages/my-cart/my-cart.component';
-import { SignInComponent } from './pages/sign-in/sign-in.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { RecoveryComponent } from './pages/recovery/recovery.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { AdminComponent } from './pages/admin/admin.component';
-import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { HomeComponent } from './website/pages/home/home.component';
+import { NotFoundComponent } from './website/pages/not-found/not-found.component';
+import { CategoryComponent } from './website/pages/category/category.component';
+import { MyCartComponent } from './website/pages/my-cart/my-cart.component';
+import { SignInComponent } from './website/pages/sign-in/sign-in.component';
+import { RegisterComponent } from './website/pages/register/register.component';
+import { RecoveryComponent } from './website/pages/recovery/recovery.component';
+import { ProfileComponent } from './website/pages/profile/profile.component';
+import { AdminComponent } from './website/pages/admin/admin.component';
+import { ProductDetailComponent } from './website/pages/product-detail/product-detail.component';
+import { LayoutComponent } from './website/components/layout/layout.component';
 /* END OF PAGES */
 
 @NgModule({
@@ -78,7 +79,8 @@ import { ProductDetailComponent } from './pages/product-detail/product-detail.co
     CategoryComponent,
     SignInComponent,
     AdminComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,

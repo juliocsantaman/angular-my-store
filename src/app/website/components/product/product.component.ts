@@ -43,8 +43,6 @@ export class ProductComponent implements OnInit {
 
   showDetail(): void {
     this.detailShown.emit(this.product.id);
-    // console.log('id: ' + this.product.id);
-    // this.router.navigate(['/product-detail', this.product.id]);
   }
 
 }

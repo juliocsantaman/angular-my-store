@@ -45,6 +45,7 @@ export class SignUpComponent implements OnInit {
         }).then(() => {
           this.signUpForm.reset();
           // Go home (login).
+          console.log('navigate sign in');
           this.router.navigate(['sign-in']);
         });
       });

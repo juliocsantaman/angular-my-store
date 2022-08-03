@@ -21,6 +21,7 @@
 
 .button {
   width: 100%;
+  display: inline;
   margin-top: 1.5rem;
   cursor: pointer;
   border: none;
@@ -28,6 +29,24 @@
   color: white;
   padding: 0.8rem;
   border-radius: 4px;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}
+
+.button-link {
+  width: 100%;
+  display: block;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  border: none;
+  background-color: rgba(199, 199, 199, 1);
+  color: white;
+  padding: 0.8rem 0rem;
+  border-radius: 4px;
+  text-decoration: none;
+  text-align: center;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.7);

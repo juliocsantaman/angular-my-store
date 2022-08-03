@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Product, CreateProductDTO, UpdateProductDTO } from '../../interfaces/product.model';
+import { Product, CreateProductDTO, UpdateProductDTO } from '../../../interfaces/product.model';
 import { StoreService } from 'src/app/services/store-service/store.service';
 import { ProductsService } from 'src/app/services/products-service/products.service';
 

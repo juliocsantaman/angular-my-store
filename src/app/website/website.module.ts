@@ -5,6 +5,7 @@ import { SwiperModule } from 'swiper/angular';
 import { WebsiteRoutingModule } from './website-routing.module';
 import { SharedModule } from './../shared/shared.module';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { QuicklinkModule } from 'ngx-quicklink';
 /* END OF MODULES */
 
 /* COMPONENTS */
@@ -61,7 +62,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatInputModule,
     MatIconModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    QuicklinkModule
   ]
 })
 export class WebsiteModule { }

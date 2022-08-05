@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { QuicklinkModule } from 'ngx-quicklink';
 /* END OF MODULES */
 
 /* COMPONENTS */
@@ -38,7 +39,8 @@ import { TokenInterceptor } from './interceptors/token-interceptor/token.interce
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    QuicklinkModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TimeInterceptor, multi: true },

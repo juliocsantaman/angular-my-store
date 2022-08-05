@@ -4,7 +4,7 @@ export interface User {
   email: string;
   password: string;
   // role: string;
-  role: 'customer | admin';
+  role: 'customer' | 'admin';
 }
 
 export interface CreateUserDTO extends Omit<User, 'id'> { }

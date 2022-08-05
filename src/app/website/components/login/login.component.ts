@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
 
     if (this.loginForm.valid) {
       const account = this.loginForm.value;
-      //console.log(this.loginForm.value);
+      console.log(this.loginForm.value);
 
       this.authService.login(account.email, account.password).subscribe((token) => {
         //console.log(token.access_token);
@@ -51,8 +51,11 @@ export class LoginComponent implements OnInit {
         }).then(() => {
           this.loginForm.reset();
           // Go home (products).
-          this.authService.profile().subscribe();
-          this.router.navigate(['home']);
+          this.authService.profile().subscribe((data) => {
+            console.log(data);
+            this.router.navigate(['home']);
+          });
+
         });
 
       });
@@ -70,5 +73,4 @@ export class LoginComponent implements OnInit {
   goFormSignUp() {
     this.router.navigate(['register']);
   }
-
 }

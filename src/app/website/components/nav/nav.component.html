@@ -34,7 +34,7 @@
         <li *ngFor="let category of categories">
           <a routerLinkActive="active" [routerLink]="['/category', category.id]"> {{ category.name }} </a>
         </li>
-        <li> <a routerLinkActive="active" [routerLink]="'admin'">Admin-config</a> </li>
+        <li> <a routerLinkActive="active" [routerLink]="'cms'">Admin-config</a> </li>
       </ul>
     </nav>
     <div class="info">

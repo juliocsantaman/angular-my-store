@@ -9,7 +9,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
-import { AuthGuard } from '../guards/auth.guard';
+import { AuthGuard } from '../guards/auth-guard/auth.guard';
+import { SignInGuard } from '../guards/sign-in-guard/sign-in.guard';
+import { ExitGuard } from '../guards/exit-guard/exit.guard';
 
 const routes: Routes = [
 
@@ -20,11 +22,12 @@ const routes: Routes = [
       [
         {
           path: '',
-          redirectTo: '/sign-in',
-          pathMatch: 'full'
+          redirectTo: 'sign-in',
+          pathMatch: 'full',
         },
         {
           path: 'home',
+          canActivate: [AuthGuard],
           component: HomeComponent
         },
         {
@@ -40,10 +43,12 @@ const routes: Routes = [
         },
         {
           path: 'sign-in',
+          canActivate: [SignInGuard],
           component: SignInComponent
         },
         {
           path: 'register',
+          canDeactivate: [ExitGuard],
           component: RegisterComponent
         },
         {

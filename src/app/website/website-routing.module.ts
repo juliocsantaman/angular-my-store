@@ -9,6 +9,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
 
@@ -16,43 +17,54 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children:
-    [
-      {
-        path: '', redirectTo:'/sign-in', pathMatch: 'full'
-      },
-      {
-        path: 'home', component: HomeComponent
-      },
-      {
-        path: 'category',
-        loadChildren: () => import('./pages/category/category.module').then(m => m.CategoryModule),
-        data: {
-          preload: true
-        }
-      },
-      {
-        path: 'my-cart', component: MyCartComponent
-      },
-      {
-        path: 'sign-in', component: SignInComponent
-      },
-      {
-        path: 'register', component: RegisterComponent
-      },
-      {
-        path: 'recovery', component: RecoveryComponent
-      },
-      {
-        path: 'profile', component: ProfileComponent
-      },
-      {
-        path: 'admin', component: AdminComponent
-      },
-      {
-        path: 'product-detail/:id', component: ProductDetailComponent
-      },
+      [
+        {
+          path: '',
+          redirectTo: '/sign-in',
+          pathMatch: 'full'
+        },
+        {
+          path: 'home',
+          component: HomeComponent
+        },
+        {
+          path: 'category',
+          loadChildren: () => import('./pages/category/category.module').then(m => m.CategoryModule),
+          data: {
+            preload: true
+          }
+        },
+        {
+          path: 'my-cart',
+          component: MyCartComponent
+        },
+        {
+          path: 'sign-in',
+          component: SignInComponent
+        },
+        {
+          path: 'register',
+          component: RegisterComponent
+        },
+        {
+          path: 'recovery',
+          component: RecoveryComponent
+        },
+        {
+          path: 'profile',
+          canActivate: [AuthGuard],
+          component: ProfileComponent
+        },
+        {
+          path: 'admin',
+          component: AdminComponent
+        },
+        {
+          path: 'product-detail/:id',
+          component: ProductDetailComponent
+        },
 
-    ]
+      ]
   }
 ];
 

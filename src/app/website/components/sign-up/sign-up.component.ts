@@ -36,7 +36,9 @@ export class SignUpComponent implements OnInit {
 
     if (this.signUpForm.valid) {
       const account = this.signUpForm.value;
-      console.log(this.signUpForm.value);
+      account.role = 'customer';
+      //console.log(this.signUpForm.value);
+      console.log(account);
       this.usersService.create(account).subscribe((user) => {
         console.log(user);
         Swal.fire({

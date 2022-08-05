@@ -38,7 +38,7 @@ export class ProductsComponent implements OnInit {
   constructor(private storeService: StoreService, private productsService: ProductsService) { }
 
   ngOnInit(): void {
-    this.shoppingCart = this.storeService.getShoppingCart();
+    //this.shoppingCart = this.storeService.getShoppingCart();
     this.total = this.storeService.getTotal();
   }
 

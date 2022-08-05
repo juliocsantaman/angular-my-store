@@ -21,4 +21,9 @@ export class TokenService {
     const token = localStorage.getItem('token');
     return token;
   }
+
+  deleteToken(): void {
+    localStorage.removeItem('token');
+    this.token.next('');
+  }
 }

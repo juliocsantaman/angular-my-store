@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class UsersService {
 
-  private apiUrl: string = 'https://young-sands-07814.herokuapp.com/api/users';
+  //private apiUrl: string = 'https://young-sands-07814.herokuapp.com/api/users';
+  private apiUrl: string = 'https://damp-spire-59848.herokuapp.com/api/users';
 
   constructor(private httpClient: HttpClient) { }
 

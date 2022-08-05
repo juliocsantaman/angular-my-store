@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
   hide = true;
-  //@Output() logged = new EventEmitter<string>();
 
   constructor(
     private authService: AuthService,
@@ -51,8 +50,8 @@ export class LoginComponent implements OnInit {
           title: 'Iniciando sesión'
         }).then(() => {
           this.loginForm.reset();
-          //this.logged.emit(token.access_token);
           // Go home (products).
+          this.authService.profile().subscribe();
           this.router.navigate(['home']);
         });
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Auth } from 'src/app/interfaces/auth.model';
-import { Observable, tap} from 'rxjs';
+import { Observable, tap, BehaviorSubject } from 'rxjs';
 import { User } from 'src/app/interfaces/user.model';
 import { TokenService } from '../token-service/token.service';
 
@@ -10,7 +10,11 @@ import { TokenService } from '../token-service/token.service';
 })
 export class AuthService {
 
-  private apiUrl: string = 'https://young-sands-07814.herokuapp.com/api/auth';
+  //private apiUrl: string = 'https://young-sands-07814.herokuapp.com/api/auth';
+  private apiUrl: string = 'https://damp-spire-59848.herokuapp.com/api/auth';
+
+  private user = new BehaviorSubject<User | null>(null);
+  user$ = this.user.asObservable();
 
   constructor(
     private httpClient: HttpClient,
@@ -25,6 +29,11 @@ export class AuthService {
     );
   }
 
+  logout(): void {
+    this.user.next(null);
+    return this.tokenService.deleteToken();
+  }
+
   // profile(token: string): Observable<User> {
   //   // const headers = new HttpHeaders();
   //   // headers.set('Authorization', `Bearer ${token}`);
@@ -37,7 +46,11 @@ export class AuthService {
   // }
 
     profile(): Observable<User> {
-    return this.httpClient.get<User>(`${this.apiUrl}/profile`);
+    return this.httpClient.get<User>(`${this.apiUrl}/profile`)
+    .pipe
+    (
+      tap(user => this.user.next(user))
+    );
   }
 
 }

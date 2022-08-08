@@ -1,6 +1,40 @@
-<div *ngIf="user">
-  <h1>My profile</h1>
-  <p>Name: {{ user.name }} </p>
-  <p>Email: {{ user.email }} </p>
-  <p>Role: {{ user.role }} </p>
+<div class="profile">
+  <a *ngIf="user?.role === 'admin' " class="go-cms" routerLinkActive="active" [routerLink]="'/cms'">CMS (ADMIN)</a>
+
+  <!-- CARD -->
+  <div *ngIf="user" class="card card--dark">
+    <!-- CARD HEADER -->
+    <div class="card__header">
+      <img class="card__header-bg"
+        src="https://images.pexels.com/photos/1114690/pexels-photo-1114690.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+        alt="A sky">
+      <img class="card__profile"
+        src="https://images.pexels.com/photos/4904563/pexels-photo-4904563.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+        alt="A good man" title="Julio">
+    </div>
+    <!-- END OF CARD HEADER -->
+    <!-- CARD BODY -->
+    <div class="card__body">
+      <h3 class="card__title"> {{ user.name }} </h3>
+      <h4 class="card__subtitle">Web developer</h4>
+      <div class="card__divider card__divider--red"></div>
+      <div class="card__more-info">
+        <div class="card__email">
+          <i class="fa-solid fa-location-dot"></i>
+          <p class="card__email-info"> {{ user.email }} </p>
+        </div>
+        <div class="card__role">
+          <i class="fa-solid fa-envelope"></i>
+          <p class="card__role-info"> {{ user.role }} </p>
+        </div>
+      </div>
+    </div>
+    <!-- END OF CARD BODY -->
+    <!-- CARD FOOTER -->
+    <div class="card__footer">
+      <button class="card__btn card__btn-red" (click)="logout()">Logout</button>
+    </div>
+    <!-- END OF CARD FOOTER -->
+  </div>
+  <!-- END OF CARD -->
 </div>

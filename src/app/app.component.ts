@@ -23,9 +23,12 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     const token = this.tokenService.getToken();
     if(token) {
-      this.authService.profile().subscribe();
-      console.log('redirección xd');
-      this.router.navigate(['home']);
+      //console.log('Token: ', token);
+      this.authService.profile().subscribe((data) => {
+        // console.log('Data: ', data);
+        // console.log('redirección xd');
+        this.router.navigate(['home']);
+      });
     }
   }
 

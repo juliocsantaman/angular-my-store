@@ -1,19 +1,25 @@
 p, h2 {
-  margin-top: 1rem;
+  padding-top: 1rem;
 }
 
-.product {
+.card-product__body {
+  //background-color: rgba(0, 0, 0, 0.1);
+  background-color: #F7F7F7;
+  padding: 1rem;
+}
+
+.card-product {
   margin-bottom: 4rem;
   width: 100%;
   position: relative;
 }
 
-.product-title {
+.card-product__title {
   font-weight: bold;
   line-height: 26px;
 }
 
-.product-delete {
+.card-product__delete {
   position: absolute;
   display: flex;
   justify-content: center;

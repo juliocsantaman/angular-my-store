@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout.component';
-import { AdminComponent } from './pages/admin/admin.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MyCartComponent } from './pages/my-cart/my-cart.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
@@ -22,8 +21,8 @@ const routes: Routes = [
       [
         {
           path: '',
-          redirectTo: 'sign-in',
-          pathMatch: 'full',
+          canActivate: [SignInGuard],
+          component: SignInComponent
         },
         {
           path: 'home',
@@ -32,6 +31,7 @@ const routes: Routes = [
         },
         {
           path: 'category',
+          canActivate: [AuthGuard],
           loadChildren: () => import('./pages/category/category.module').then(m => m.CategoryModule),
           data: {
             preload: true
@@ -39,12 +39,8 @@ const routes: Routes = [
         },
         {
           path: 'my-cart',
+          canActivate: [AuthGuard],
           component: MyCartComponent
-        },
-        {
-          path: 'sign-in',
-          canActivate: [SignInGuard],
-          component: SignInComponent
         },
         {
           path: 'register',
@@ -61,11 +57,8 @@ const routes: Routes = [
           component: ProfileComponent
         },
         {
-          path: 'admin',
-          component: AdminComponent
-        },
-        {
           path: 'product-detail/:id',
+          canActivate: [AuthGuard],
           component: ProductDetailComponent
         },
 

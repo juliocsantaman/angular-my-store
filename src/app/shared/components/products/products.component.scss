@@ -1,5 +1,5 @@
 h1 {
-  margin: 1rem 0rem;
+  // padding-top: 10rem;
   font-size: 24px;
   font-weight: bold;
 }
@@ -79,9 +79,9 @@ h1 {
 }
 
 @media (min-width: 992px) {
-  .products-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 80px;
-  }
+  // .products-grid {
+  //   display: grid;
+  //   grid-template-columns: repeat(4, 1fr);
+  //   gap: 80px;
+  // }
 }

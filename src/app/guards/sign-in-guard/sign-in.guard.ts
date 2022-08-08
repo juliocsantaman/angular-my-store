@@ -22,9 +22,11 @@ export class SignInGuard implements CanActivate {
       (
         map(user => {
           if(user) {
+            console.log('user of sign-in guard', user);
             this.router.navigate(['home']);
             return false;
           } else {
+            console.log('user of sign-in guard', user);
             return true;
           }
         })

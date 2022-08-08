@@ -11,10 +11,13 @@
   font-family: 'Quicksand', 'sans-serif';
 }
 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 .products-grid {
   app-img {
     img {
-      border-radius: 10px;
+      border-radius: 10px 10px 0px 0px;
     }
   }
 }
@@ -64,6 +67,3 @@
 .button__very-light-pink {
   background-color: rgba(199, 199, 199, 1);
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

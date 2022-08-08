@@ -13,7 +13,6 @@ import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { NavComponent } from './components/nav/nav.component';
-import { AdminConfigComponent } from './components/admin-config/admin-config.component';
 /* END OF COMPONENTS */
 
 /* PAGES */
@@ -23,7 +22,6 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { AdminComponent } from './pages/admin/admin.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { LayoutComponent } from './components/layout/layout.component';
 /* END OF PAGES */
@@ -44,14 +42,12 @@ import {MatIconModule} from '@angular/material/icon';
     RegisterComponent,
     RecoveryComponent,
     ProfileComponent,
-    AdminComponent,
     ProductDetailComponent,
     LayoutComponent,
     LoginComponent,
     SignUpComponent,
     ShoppingCartComponent,
-    NavComponent,
-    AdminConfigComponent
+    NavComponent
   ],
   imports: [
     CommonModule,

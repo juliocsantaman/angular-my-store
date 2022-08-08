@@ -31,7 +31,7 @@ export class NavComponent implements OnInit {
     });
 
     this.authService.user$.subscribe((data) => {
-      this.account = data?.email;
+      this.account = data?.name;
     })
 
     this.getAllCategories();

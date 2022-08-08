@@ -9,6 +9,23 @@
   }
 }
 
+.cart {
+  position: relative;
+  .counter {
+    position: absolute;
+    top: -40%;
+    left: 50%;
+    background-color: #ACD9B2;
+    color: white;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  }
+}
+
 .show-mobile {
   display: block;
   position: sticky;
@@ -88,23 +105,6 @@
     align-items: center;
     .account {
       margin-right: .5em;
-    }
-
-    .cart {
-      position: relative;
-      .counter {
-        position: absolute;
-        top: -40%;
-        left: 50%;
-        background-color: #ACD9B2;
-        color: white;
-        width: 20px;
-        height: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 50%;
-      }
     }
   }
 }

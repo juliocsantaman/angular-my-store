@@ -6,9 +6,12 @@
     <a [routerLink]="''">
       <img src="./assets/svg/logo_yard_sale.svg" alt="logo">
     </a>
-    <a [routerLink]="'shopping-cart'">
-      <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
-    </a>
+    <div class="cart">
+      <a [routerLink]="'my-cart'">
+        <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
+      </a>
+      <span class="counter">{{ counter }}</span>
+    </div>
   </div>
 
   <div class="side-menu" [ngClass]="{'active': showMenu }">
@@ -18,7 +21,6 @@
       <li *ngFor="let category of categories">
         <a routerLinkActive="active" [routerLink]="['/category', category.id]"> {{ category.name }} </a>
       </li>
-      <li> <a routerLinkActive="active" [routerLink]="'admin'">Admin-config</a> </li>
     </ul>
   </div>
 </div>
@@ -38,7 +40,7 @@
     </nav>
     <div class="info">
       <!-- <div class="accounts">juliocsantaman@gmail.com</div> -->
-      <div  *ngIf="account" class="account">
+      <div *ngIf="account" class="account">
         <a [routerLink]="'/profile'">
           {{ account }}
         </a>

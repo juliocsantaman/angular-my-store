@@ -21,11 +21,11 @@ export class LoginComponent implements OnInit {
     private tokenService: TokenService,
     private fb: FormBuilder,
     private router: Router
-  ) { }
+  ) {
+    this.loginForm = this.initForm();
+  }
 
   ngOnInit(): void {
-    this.loginForm = this.initForm();
-
   }
 
   initForm(): FormGroup {
@@ -35,39 +35,89 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  get emailField() {
+    return this.loginForm.get('email');
+  }
+
+  get passwordField() {
+    return this.loginForm.get('password');
+  }
+
   submit(): void {
 
     if (this.loginForm.valid) {
       const account = this.loginForm.value;
       console.log(this.loginForm.value);
 
-      this.authService.login(account.email, account.password).subscribe((token) => {
-        //console.log(token.access_token);
-        this.tokenService.saveToken(token.access_token);
+      // this.authService.login(account.email, account.password).subscribe((token) => {
+      //   //console.log(token.access_token);
+      //   this.tokenService.saveToken(token.access_token);
 
-        Swal.fire({
-          icon: 'success',
-          title: 'Iniciando sesión'
-        }).then(() => {
-          this.loginForm.reset();
-          // Go home (products).
-          this.authService.profile().subscribe((data) => {
-            console.log(data);
-            this.router.navigate(['home']);
+      //   Swal.fire({
+      //     icon: 'success',
+      //     title: 'Iniciando sesión',
+      //     allowOutsideClick: false,
+      //     showConfirmButton: false,
+      //     timer: 1000
+
+      //   }).then(() => {
+      //     this.loginForm.reset();
+      //     // Go home (products).
+      //     this.authService.profile().subscribe((data) => {
+      //       console.log(data);
+      //       this.router.navigate(['home']);
+      //     });
+
+      //   });
+
+
+
+      // });
+
+      this.authService.login(account.email, account.password).subscribe(
+        (token) => {
+          //console.log(token.access_token);
+          this.tokenService.saveToken(token.access_token);
+
+          Swal.fire({
+            icon: 'success',
+            title: 'Iniciando sesión',
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            timer: 1000
+
+          }).then(() => {
+            this.loginForm.reset();
+            // Go home (products).
+            this.authService.profile().subscribe((data) => {
+              console.log(data);
+              this.router.navigate(['home']);
+            });
+
           });
+        },
 
-        });
-
-      });
+        err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Account is not unauthorized',
+            allowOutsideClick: false,
+            showConfirmButton: true
+          })
+        }
+      );
 
     }
-    else {
+
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
       Swal.fire({
         icon: 'warning',
         title: 'Advertencia',
         text: 'Ingresa la información correcta.'
       });
     }
+
   }
 
   goFormSignUp() {

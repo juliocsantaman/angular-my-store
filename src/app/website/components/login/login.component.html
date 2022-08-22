@@ -4,14 +4,29 @@
     <mat-form-field appearance="fill">
       <mat-label>Enter your email</mat-label>
       <input matInput placeholder="pat@example.com" required formControlName="email">
+      <div class="error-messages" *ngIf="emailField?.touched && emailField?.invalid">
+        <mat-error *ngIf="emailField?.hasError('required')">
+          Este campo es requerido.
+        </mat-error>
+        <mat-error *ngIf="emailField?.hasError('pattern')">
+          Proporciona un email válido.
+        </mat-error>
+      </div>
     </mat-form-field>
+
 
     <mat-form-field appearance="fill">
       <mat-label>Enter your password</mat-label>
       <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
-      <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
+      <div class="error-messages" *ngIf="passwordField?.touched && passwordField?.invalid">
+        <mat-error *ngIf="passwordField?.hasError('required')">
+          Este campo es requerido.
+        </mat-error>
+      </div>
     </mat-form-field>
 
     <button class="button" type="submit">Login</button>

@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 /* COMPONENTS */
-import { TasksComponent } from './pages/tasks/tasks.component';
-import { GridComponent } from './pages/grid/grid.component';
 import { LayoutComponent } from './components/layout/layout.component';
 /* END OF COMPONENTS */
 
@@ -12,23 +10,14 @@ const routes: Routes =
   {
     path: '',
     component: LayoutComponent,
-    children:
-    [
+    children: [
       {
-        path: '',
-        redirectTo: 'grid',
-        pathMatch: 'full'
-      },
-      {
-        path: 'grid',
-        component: GridComponent
-      },
-      {
-        path: 'tasks',
-        component: TasksComponent
+        path: 'products',
+        loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
       }
     ]
   }
+
 ];
 
 @NgModule({

@@ -1,18 +1,21 @@
-<div>
-  <header>
-    <h3>Title</h3>
-  </header>
-  <nav>
-    <ul>
-      <li>
-        <a [routerLink]="['grid']">Grid page</a>
-      </li>
-      <li>
-        <a [routerLink]="['tasks']">Tasks page</a>
-      </li>
-    </ul>
-  </nav>
-  <main>
-    <router-outlet></router-outlet>
-  </main>
+<div class="example-container">
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name">Responsive App</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav #snav>
+      <mat-nav-list>
+        <a  routerLink="/cms/products" >Productos</a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>
+
+
+
